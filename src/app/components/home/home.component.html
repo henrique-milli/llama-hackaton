@@ -1,0 +1,175 @@
+<!-- TODO: Split this into a few components -->
+
+<!-- Toolbar -->
+<mat-toolbar>
+  <span class="logo">LlamaCare</span>
+  <span class="spacer"></span>
+  <button mat-flat-button (click)="onEndorse()">Endorse demo</button>
+</mat-toolbar>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="content two-col">
+    <div class="copy space-between">
+      <h1>How can I help you today?</h1>
+
+      <!-- Messages Area -->
+      <div class="messages-area" #messagesArea>
+        <div *ngFor="let message of messages" [class]="message.isUser ? 'user' : 'agent'">
+          <img *ngIf="!message.isUser" src="hero.webp" alt="Agent Profile">
+          <div *ngIf="!message.content" class="typing">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span *ngIf="message.content">{{ message.content }}</span>
+          <img *ngIf="message.isUser" src="henrique.png" alt="User Profile">
+        </div>
+      </div>
+
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field subscriptSizing="dynamic">
+          <input matInput [disabled]="isLoading" [(ngModel)]="userMessage" name="userMessage" required autofocus>
+        </mat-form-field>
+        <button mat-fab type="submit">
+          <mat-icon>send</mat-icon>
+        </button>
+      </form>
+    </div>
+    <div class="hero-image">
+      <img alt="Illustration of healthcare assistance" loading="eager" src="hero.webp"/>
+    </div>
+  </div>
+</section>
+
+<!-- Problem & Solution Section -->
+<section class="problem-solution-section">
+  <div class="content two-row">
+    <div>
+      <h2>
+        <mat-icon class="error">assignment_late</mat-icon>
+        The Problem of Healthcare Platforms
+      </h2>
+      <p class="mat-title-large">
+        You know you have that health issue, but do you know out of the blue which specialist to see?
+      </p>
+    </div>
+    <div>
+      <h2>
+        LlamaCare is tomorrow's solution
+        <mat-icon class="secondary">emoji_objects</mat-icon>
+      </h2>
+      <p class="mat-title-large">
+        Skip the middleman and go straight to the right specialist with our AI-powered recommendations.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- How It Works -->
+<section class="how-it-works-section">
+  <div class="content">
+    <h2>Get Help in 3 Simple Steps</h2>
+    <div class="steps">
+      <mat-card class="step-card">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>looks_one</mat-icon>
+          <mat-card-title>Ask LlamaCare</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Describe your symptoms or needs in your preferred language.</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="step-card">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>looks_two</mat-icon>
+          <mat-card-title>Recommendations</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Our AI suggests specialists and services tailored to your needs.</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="step-card">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>looks_3</mat-icon>
+          <mat-card-title>Booking</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Schedule your visit seamlessly through our platform.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <button mat-flat-button (click)="onEndorse()">
+      Award 1st place
+    </button>
+  </div>
+</section>
+
+<!-- Features Coming Soon -->
+<section class="coming-soon-section">
+  <div class="content">
+    <h2>LlamaCare's unlimited potential</h2>
+    <p>Imagine the impact on thousands of millions of lives:</p>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon matListItemIcon>new_releases</mat-icon>
+        <div matListItemTitle>Accessible healthcare for anyone, anywhere</div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>new_releases</mat-icon>
+        <div matListItemTitle>Above average first diagnosis</div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>new_releases</mat-icon>
+        <div matListItemTitle>Cares about you 24/7, with real time data</div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>new_releases</mat-icon>
+        <div matListItemTitle>Lowers the barriers and raise awareness</div>
+      </mat-list-item>
+    </mat-list>
+    <button mat-raised-button (click)="onEndorse()">
+      Choose as winner
+    </button>
+  </div>
+</section>
+
+<!-- Founder's Story -->
+<section class="founders-story-section">
+  <div class="content">
+    <h2>Built by People Who Care</h2>
+    <div class="story-wrapper">
+      <p>
+        Hi, I’m Henrique Milli, founder of HMD Digital S.R.L. I created this demo to highlight the innovative
+        opportunities in the healthcare industry, brought to life by the new generation of vertical AI agents. I hope
+        you enjoy it!
+      </p>
+      <img alt="Henrique Milli's profile picture" class="profile" loading="lazy" src="henrique.png"/>
+    </div>
+    <button mat-flat-button (click)="onEndorse()">
+      Innovate with me
+    </button>
+  </div>
+</section>
+
+<!-- Final Call-to-Action -->
+<section class="final-cta-section">
+  <div>
+    <h2>Your Journey to Impact Starts Here</h2>
+    <p>
+      Endorse this project as the winner of the hackathon.
+    </p>
+    <button mat-raised-button (click)="onEndorse()">
+      Declare winner
+    </button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <p>&copy; 2024 HMD Digital S.R.L. All rights reserved.</p>
+    <p>Powered by <a href="https://hmd.digital">HMD Digital S.R.L.</a> | Your health, your control.</p>
+  </div>
+</footer>

@@ -1,0 +1,96 @@
+general practitioner
+gynecologist
+orthopedic surgeon
+dermatologist
+nutritionist
+psychologist
+ophthalmologist
+urologist
+otolaryngologist
+cardiologist
+dentist
+general surgeon
+osteopath
+internist
+aesthetic physician
+endocrinologist
+gastroenterologist
+neurologist
+neurosurgeon
+physiotherapist
+plastic surgeon
+psychiatrist
+psychotherapist
+pediatrician
+podiatrist
+rheumatologist
+pulmonologist
+physiatrist
+vascular surgeon
+dietitian
+andrologist
+allergist
+radiologist
+proctologist
+angiologist
+hematologist
+senologist
+dietitian
+geriatrician
+sports physician
+acupuncturist
+oncologist
+surgeon
+clinical psychologist
+primary care pediatrician
+nephrologist
+diabetologist
+speech therapist
+chiropractor
+cardiac surgeon
+maxillofacial surgeon
+medical examiner
+orthodontist
+child neuropsychiatrist
+cosmetic surgeon
+anesthesiologist
+pain therapist
+obstetrician
+competent physician
+homeopath
+infectivologist
+sexologist
+sonographer
+hepatologist
+thoracic surgeon
+diagnostic radiologist
+pediatric surgeon
+massophysiotherapist
+orthoptist
+spinal surgeon
+posturologist
+health technician
+certifying physician
+therapist
+phoniatrician
+trichologist
+professional counselor
+immunologist
+dental hygienist
+medical geneticist
+neuropsychologist
+reproductive biologist
+anatomic pathologist
+radiation oncologist
+nuclear medicine physician
+nurse
+Kinesiologist
+blood donor
+stomatologist
+radiology technician
+covid test
+clinical analyst
+audiologist
+epidemiologist
+venereologist
+Dental technician
