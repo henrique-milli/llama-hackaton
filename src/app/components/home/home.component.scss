@@ -161,11 +161,15 @@ $speed: 1.5s;
   margin: 0 10px;
 }
 
-.messages-area .user span,
-.messages-area .agent span {
+.messages-area span {
+  display: block;
   max-width: 70%;
   padding: 10px;
   border-radius: 10px;
+}
+
+.message-wrapper {
+  display: ruby;
 }
 
 .agent > .user-profile {
@@ -176,14 +180,35 @@ $speed: 1.5s;
   display: none;
 }
 
-.messages-area .user span {
+.agent-profile, .user-profile {
+  margin-bottom: auto !important;
+}
+
+.doctor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.doctor-card {
+  flex: 1 1 200px;
+  max-width: 200px;
+  cursor: pointer;
+}
+
+.user span {
   background-color: var(--mat-sys-primary-container);
   @include mat.elevation(1);
 }
 
-.messages-area .agent span {
+.agent span {
   background-color: var(--mat-sys-secondary-container);
   @include mat.elevation(1);
+}
+
+.stars {
+  color: var(--mat-sys-secondary);
 }
 
 .hero-image {

@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
-import { AgentResponse, Message } from '../../../models/agentResponse';
+import { AgentResponse, Doctor, Message } from '../../../models/agentResponse';
 
 @Component({
   selector: 'app-home',
@@ -68,4 +68,24 @@ export class HomeComponent implements AfterViewChecked {
   isAgentResponse(message: AgentResponse | Message): message is AgentResponse {
     return (message as AgentResponse).threadId !== undefined;
   }
+
+
+  async onDoctorClick(doctor: Doctor) {
+    const userMessage = `${doctor.name}.`;
+    this.messages.push({message: userMessage});
+    this.isLoading = true;
+    this.messages.push({threadId: 'loading...'});
+    try {
+      const response: AgentResponse = await this.llamaAgentService.sendMessage(userMessage, this.threadId);
+      if (response.message) {
+        this.messages[this.messages.length - 1] = response;
+        this.threadId = response.threadId;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
 }

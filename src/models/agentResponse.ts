@@ -7,7 +7,7 @@ export interface Doctor {
   picture: string;
   distance: number;
   specialization: string;
-  rating: number;
+  availability: string;
 }
 
 export interface AgentResponse {

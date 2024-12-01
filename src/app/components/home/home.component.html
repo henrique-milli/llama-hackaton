@@ -20,7 +20,32 @@
             <span></span>
             <span></span>
           </div>
-          <span *ngIf="message.message">{{ message.message }}</span>
+          <div class="message-wrapper">
+            <span *ngIf="message.message">{{ message.message }}</span>
+            <!-- Doctor Cards -->
+            <div *ngIf="isAgentResponse(message) && message.doctors" class="doctor-cards">
+              <mat-card *ngFor="let doctor of message.doctors" class="doctor-card" (click)="onDoctorClick(doctor)">
+                <mat-card-header>
+                  <div>
+                    <mat-card-title>{{ doctor.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ doctor.specialization }}</mat-card-subtitle>
+                  </div>
+                  <img mat-card-image src="doctor.jpg" alt="{{ doctor.name }}">
+                </mat-card-header>
+                <mat-card-content>
+                  <p>{{ doctor.distance }} km</p>
+                  <p>{{ doctor.availability }}</p>
+                  <div class="stars">
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon class="material-icons-outlined">star</mat-icon>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
           <img class="user-profile" src="henrique.png" alt="User Profile">
         </div>
       </div>

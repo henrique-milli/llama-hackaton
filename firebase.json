@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist/midas-cv-template/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
