@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/midas-cv-template/browser",
+    "public": "dist/llama-hackaton/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
