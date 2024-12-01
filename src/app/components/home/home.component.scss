@@ -22,20 +22,13 @@ mat-toolbar {
 }
 
 section {
-  padding: 80px 20px;
+  padding: 60px 20px;
 }
-
-.content {
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
 
 .two-col {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
-  height: 100%;
 }
 
 .two-row {
@@ -48,13 +41,14 @@ section {
   }
 }
 
-
-.error {
-  color: var(--mat-sys-error);
+.content {
+  margin: 0 auto;
+  max-width: 1200px;
+  height: inherit;
 }
 
-.secondary {
-  color: var(--mat-sys-secondary);
+.copy {
+  height: inherit;
 }
 
 .hero-section {
@@ -62,13 +56,12 @@ section {
   background-image: url('/llama.svg');
   background-size: 50px;
   background-repeat: repeat;
-  height: calc(100vh - 64px - 80px - 80px);
+  height: calc(100vh - 64px - 120px); // full screen - toolbar - padding
 }
 
 .how-it-works-section, .founders-story-section {
   background-color: var(--mat-sys-surface-container);
 }
-
 
 .space-between {
   display: flex;
@@ -122,7 +115,6 @@ $speed: 1.5s;
   }
 }
 
-
 @keyframes blink {
   0% {
     opacity: .1;
@@ -141,7 +133,6 @@ $speed: 1.5s;
   gap: 10px;
   padding: 12px;
   overflow: auto;
-  height: 100%;
   margin-bottom: 12px;
 }
 
@@ -177,6 +168,14 @@ $speed: 1.5s;
   border-radius: 10px;
 }
 
+.agent > .user-profile {
+  display: none;
+}
+
+.user > .agent-profile {
+  display: none;
+}
+
 .messages-area .user span {
   background-color: var(--mat-sys-primary-container);
   @include mat.elevation(1);
@@ -185,6 +184,24 @@ $speed: 1.5s;
 .messages-area .agent span {
   background-color: var(--mat-sys-secondary-container);
   @include mat.elevation(1);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: end;
+
+  img {
+    width: 100%;
+    @include mat.elevation(2);
+  }
+}
+
+.error {
+  color: var(--mat-sys-error);
+}
+
+.secondary {
+  color: var(--mat-sys-secondary);
 }
 
 .founders-story-section {
@@ -214,17 +231,6 @@ $profile-size: 130px;
   border-radius: 50%;
   border: var(--mat-sys-outline) solid 1px;
   margin-left: auto;
-}
-
-.hero-image {
-  display: flex;
-  justify-content: end;
-
-  img {
-    max-width: 100%;
-    height: auto;
-    @include mat.elevation(2);
-  }
 }
 
 .steps, .features, .testimonials {

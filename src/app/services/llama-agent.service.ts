@@ -1,27 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AgentResponse } from '../../models/agentResponse';
+import { Functions, httpsCallable } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LlamaAgentService {
 
-  private apiUrl = 'http://localhost:3001/get-response';
-
-  constructor(private http: HttpClient) {
+  constructor(private functions: Functions) {
   }
 
-  sendMessage(userMessage: string, threadId?: string): Promise<AgentResponse> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
-    const body = {
-      userMessage: userMessage,
-      threadId: threadId
-    };
-
-    return this.http.post<AgentResponse>(this.apiUrl, body, {headers: headers}).toPromise() as Promise<AgentResponse>;
+  async sendMessage(userMessage: string, threadId?: string): Promise<AgentResponse> {
+    const llamaAgent = httpsCallable(this.functions, 'llamaAgent');
+    const response = await llamaAgent({userMessage, threadId});
+    return response.data as AgentResponse;
   }
 }

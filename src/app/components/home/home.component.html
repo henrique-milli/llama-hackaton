@@ -1,5 +1,3 @@
-<!-- TODO: Split this into a few components -->
-
 <!-- Toolbar -->
 <mat-toolbar>
   <span class="logo">LlamaCare</span>
@@ -15,23 +13,24 @@
 
       <!-- Messages Area -->
       <div class="messages-area" #messagesArea>
-        <div *ngFor="let message of messages" [class]="message.isUser ? 'user' : 'agent'">
-          <img *ngIf="!message.isUser" src="hero.webp" alt="Agent Profile">
-          <div *ngIf="!message.content" class="typing">
+        <div *ngFor="let message of messages" [class]="isAgentResponse(message) ? 'agent' : 'user'">
+          <img class="agent-profile" src="hero.webp" alt="Agent Profile">
+          <div *ngIf="!message.message" class="typing">
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <span *ngIf="message.content">{{ message.content }}</span>
-          <img *ngIf="message.isUser" src="henrique.png" alt="User Profile">
+          <span *ngIf="message.message">{{ message.message }}</span>
+          <img class="user-profile" src="henrique.png" alt="User Profile">
         </div>
       </div>
 
       <form (ngSubmit)="onSubmit()">
         <mat-form-field subscriptSizing="dynamic">
-          <input matInput [disabled]="isLoading" [(ngModel)]="userMessage" name="userMessage" required autofocus>
+          <input autocomplete="off" matInput [(ngModel)]="userMessage" name="userMessage" required
+                 [disabled]="isLoading" #userInput>
         </mat-form-field>
-        <button mat-fab type="submit">
+        <button mat-fab type="submit" [disabled]="isLoading">
           <mat-icon>send</mat-icon>
         </button>
       </form>
@@ -65,7 +64,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- How It Works -->
 <section class="how-it-works-section">

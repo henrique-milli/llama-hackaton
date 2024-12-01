@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
+import { AgentResponse, Message } from '../../../models/agentResponse';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ import { NgForOf, NgIf } from '@angular/common';
 })
 export class HomeComponent implements AfterViewChecked {
   userMessage: string = '';
-  messages: { isUser: boolean, content?: string }[] = [];
+  messages: (AgentResponse | Message)[] = [];
   isLoading: boolean = false;
   threadId?: string;
 
@@ -42,13 +43,13 @@ export class HomeComponent implements AfterViewChecked {
 
   async onSubmit() {
     if (this.userMessage.trim()) {
-      this.messages.push({isUser: true, content: this.userMessage});
+      this.messages.push({message: this.userMessage});
       this.isLoading = true;
-      this.messages.push({isUser: false});
+      this.messages.push({threadId: 'loading...'});
       try {
-        const response = await this.llamaAgentService.sendMessage(this.userMessage, this.threadId);
+        const response: AgentResponse = await this.llamaAgentService.sendMessage(this.userMessage, this.threadId);
         if (response.message) {
-          this.messages[this.messages.length - 1].content = response.message;
+          this.messages[this.messages.length - 1] = response;
           this.threadId = response.threadId;
         }
       } catch (error) {
@@ -62,5 +63,9 @@ export class HomeComponent implements AfterViewChecked {
 
   onEndorse() {
     alert('Thanks, that means a lot!\nReach out to me\n- Email henrique.milli@hmd.digital\n- LinkedIn https://www.linkedin.com/in/henrique-milli/\nLearn more on https://hmd.digital');
+  }
+
+  isAgentResponse(message: AgentResponse | Message): message is AgentResponse {
+    return (message as AgentResponse).threadId !== undefined;
   }
 }
